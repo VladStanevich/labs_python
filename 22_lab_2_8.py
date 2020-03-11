@@ -6,4 +6,3 @@ def dvoechka(n):
             return False
     return True
 
-print(dvoechka(256))
