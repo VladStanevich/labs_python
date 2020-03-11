@@ -14,4 +14,14 @@ for i in range(len(sum)):
         continue
     else:
         summa += sum[i]
+if l % length_box == 0:
+    summa += sum[l//length_box]
+else:
+    for i in range(l, (l//length_box + 1)*length_box):
+        summa += my_list[i]
+if r % length_box == length_box - 1:
+    summa += sum[r//length_box]
+else:
+    for i in range(r//length_box * length_box, r+1):
+        summa += my_list[i]
 print(summa)
