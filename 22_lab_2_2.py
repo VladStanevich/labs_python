@@ -5,5 +5,11 @@ def create_word(len):
     word = ''.join(random.choice(list(string.ascii_letters)) for x in range(len))
     return word
 
-for i in range(10):
-    print(create_word(random.randint(3,10)))
+def create_line(len):
+    str = ''
+    for i in range(len):
+        str += create_word(random.randint(i,10))
+        str += ' '
+    return str
+
+print(create_line(5))
