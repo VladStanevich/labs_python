@@ -6,10 +6,12 @@ def create_word(len):
     return word
 
 def create_line(len):
-    str = ''
+    stroka = ''
     for i in range(len):
-        str += create_word(random.randint(i,10))
-        str += ' '
-    return str
+        stroka += create_word(random.randint(3,10))
+        stroka += ' '
+    return stroka
 
-print(create_line(5))
+f = open("output.txt", "w")
+f.write(create_line(150))
+f.close()
