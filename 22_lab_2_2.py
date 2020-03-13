@@ -8,14 +8,19 @@ def create_word(len):
 
 def create_line(len):
     stroka = ''
-    for i in range(len):
+    for x in range(len):
         stroka += create_word(random.randint(3,10))
         stroka += ' '
     return stroka
 
-f = open("output.txt", "w")
-size = os.path.getsize("output.txt")
-while size < 1024:
-    f.write(create_line(random.randint(10,100))+"\n")
-    size = os.path.getsize("output.txt")
-f.close()
+def create_file(size):
+    f = open("output.txt", "w")
+    sz = os.path.getsize("output.txt")
+    while sz < size:
+        f.write(create_line(random.randint(10,100))+"\n")
+        sz = os.path.getsize("output.txt")
+    f.close()
+
+
+if __name__ == "__main__":
+    create_file(1024**2)
