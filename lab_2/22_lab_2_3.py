@@ -33,6 +33,6 @@ def merge_sort(A):
         A[i] = C[i]
 
 
-my_list = [4,7,2,9,3,83,1,83,47,8,29]
+my_list = list("AhkoCkdCXHKfkswq")
 merge_sort(my_list)
 print(my_list)    
