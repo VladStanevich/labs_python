@@ -1,27 +1,31 @@
 import math
 
-my_list = [int(s) for s in input("Введи элементы массива через пробел: ").split()]
-number_box = math.ceil(math.sqrt(len(my_list)))
-length_box = math.ceil(len(my_list) / number_box)
-sum = [0]*number_box
-for i in range(len(my_list)):
-    sum[i//length_box] += my_list[i]
-l = int(input("Введи левую границу: "))
-r = int(input("Введи правую границу: "))
-summa = 0
-for i in range(len(sum)):
-    if i <= l//3 or i >= r//3:
-        continue
+
+def sqrt_decomposition(A: list, l, r):
+    number_box = math.ceil(math.sqrt(len(A)))
+    length_box = math.ceil(len(A) / number_box)
+    B = [0]*number_box
+    for i in range(len(A)):
+        B[i // length_box] += A[i]
+    summa = 0
+    l_box = l // length_box
+    r_box = r // length_box
+    if l_box == r_box:
+        for i in range(l, r+1):
+            summa += A[i]
     else:
-        summa += sum[i]
-if l % length_box == 0:
-    summa += sum[l//length_box]
-else:
-    for i in range(l, (l//length_box + 1)*length_box):
-        summa += my_list[i]
-if r % length_box == length_box - 1:
-    summa += sum[r//length_box]
-else:
-    for i in range(r//length_box * length_box, r+1):
-        summa += my_list[i]
-print(summa)
+        for i in range(l, (l_box+1)*length_box):
+            summa += A[i]
+        for i in range(l_box+1, r_box):
+            summa += B[i]
+        for i in range(r_box*length_box, r+1):
+            summa += A[i]
+    return summa
+
+
+if __name__ == "__main__":
+    A = [int(s) for s in input("Введи массив через пробел: ").split()]
+    l = int(input("Введи левую границу: "))
+    r = int(input("Введи правую границу: "))
+    summa = sqrt_decomposition(A, l, r)
+    print(summa)
