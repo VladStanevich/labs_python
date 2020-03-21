@@ -2,6 +2,8 @@ import math
 
 
 def sqrt_decomposition(A: list, l, r):
+    l = l-1
+    r = r-1 
     number_box = math.ceil(math.sqrt(len(A)))
     length_box = math.ceil(len(A) / number_box)
     B = [0]*number_box
@@ -24,8 +26,25 @@ def sqrt_decomposition(A: list, l, r):
 
 
 if __name__ == "__main__":
-    A = [int(s) for s in input("Введи массив через пробел: ").split()]
-    l = int(input("Введи левую границу: "))
-    r = int(input("Введи правую границу: "))
-    summa = sqrt_decomposition(A, l, r)
-    print(summa)
+    ans = input("Как Вы хочете ввести данные: \n 1)Вручную \n 2)Через файл\n")
+    if ans == '1':
+        try:
+            A = [int(s) for s in input("Введи массив через пробел: ").split()]
+            l = int(input("Введи левую границу: "))
+            r = int(input("Введи правую границу: "))
+            summa = sqrt_decomposition(A, l, r)
+            print(summa)
+        except:
+            print("Вы некоректно ввели данные!")
+    elif ans == '2':
+        try:
+            f = open('lab_2/example.txt','r')
+            A = [int(i) for i in f.readline().split()]
+            l = int(f.readline())
+            r = int(f.readline())
+            summa = sqrt_decomposition(A, l, r)
+            print(summa)
+        except:
+            print("В файле введены некоректно данные!")
+    else:
+        print("Домой")
