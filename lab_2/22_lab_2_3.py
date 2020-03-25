@@ -1,3 +1,6 @@
+from memory_profiler import profile
+
+
 def merge(A:list, B:list):
     C = [0]*(len(A)+len(B))
     i = k = n = 0
@@ -19,7 +22,8 @@ def merge(A:list, B:list):
         k += 1
         n += 1
     return C
-
+    
+@profile
 def merge_sort(A):
     if len(A) <= 1:
         return 
@@ -33,6 +37,7 @@ def merge_sort(A):
         A[i] = C[i]
 
 
-my_list = list("AhkoCkdCXHKfkswq")
-merge_sort(my_list)
-print(my_list)    
+if __name__ == "__main__":
+    my_list = list("AcvkfjdljafFJSDLcKFDJsLdjvnlsF")
+    merge_sort(my_list)
+    print(my_list)    
