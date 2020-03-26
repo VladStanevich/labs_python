@@ -26,26 +26,29 @@ def sqrt_decomposition(A: list, l, r):
 
 
 if __name__ == "__main__":
-    ans = input("Как Вы хочете ввести данные:\n1)Вручную \n2)Через файл\n")
-    if ans == '1':
-        try:
-            A = [int(s) for s in input("Введи массив через пробел: ").split()]
-            l = int(input("Введи левую границу: "))
-            r = int(input("Введи правую границу: "))
-            summa = sqrt_decomposition(A, l, r)
-            print(summa)
-        except:
-            print("Вы некоректно ввели данные!")
-    elif ans == '2':
-        try:
-            way = input("Введите путь к файлу: ")
-            f = open(way,'r')
-            A = [int(i) for i in f.readline().split()]
-            l = int(f.readline())
-            r = int(f.readline())
-            summa = sqrt_decomposition(A, l, r)
-            print(summa)
-        except:
-            print("В файле введены некоректно данные!")
-    else:
-        print("Домой")
+    while True:
+        ans = input("Как Вы хотите ввести данные:\n1)Вручную \n2)Через файл\nЛюбой другой ответ приведёт к выходу.")
+        if ans == '1':
+            try:
+                A = [int(s) for s in input("Введи массив через пробел: ").split()]
+                l = int(input("Введи левую границу: "))
+                r = int(input("Введи правую границу: "))
+                summa = sqrt_decomposition(A, l, r)
+                print(summa)
+            except:
+                print("Вы некоректно ввели данные!")
+        elif ans == '2':
+            try:
+                way = input("Введите путь к файлу: ")
+                f = open(way,'r')
+                A = [int(i) for i in f.readline().split()]
+                l = int(f.readline())
+                r = int(f.readline())
+                f.close()
+                summa = sqrt_decomposition(A, l, r)
+                print(summa)
+            except:
+                print("Некоректно введены данные!")
+        else:
+            print("До встречи")
+            break
