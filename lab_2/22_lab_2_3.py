@@ -1,7 +1,7 @@
 from memory_profiler import profile
 
 
-def merge(A:list, B:list):
+def merge(A: list, B: list):
     C = [0]*(len(A)+len(B))
     i = k = n = 0
     while i < len(A) and k < len(B):
@@ -23,7 +23,6 @@ def merge(A:list, B:list):
         n += 1
     return C
     
-@profile
 def merge_sort(A):
     if len(A) <= 1:
         return 
@@ -36,8 +35,20 @@ def merge_sort(A):
     for i in range(len(A)):
         A[i] = C[i]
 
+@profile
+def main():
+    f = open('lab_2/output.txt','r')
+    lines = f.read().split('\n')
+    f.close()
+    s = open('lab_2/sort.txt','w')
+    merge_sort(lines)
+    for stroka in lines:
+        stroka = stroka.split()
+        merge_sort(stroka)
+        for word in stroka: 
+            s.write(word + ' ')
+        s.write('\n')
+    s.close()
 
 if __name__ == "__main__":
-    my_list = list("AcvkfjdljafFJSDLcKFDJsLdjvnlsF")
-    merge_sort(my_list)
-    print(my_list)    
+    main()
