@@ -1,6 +1,6 @@
 def leonardo_number(n):
     try:
-        if n < 0 or type(n) is not int:
+        if n <= 0 or type(n) is not int:
             print("Вы ввели не натуральное число")
         elif n == 1 or n == 2:
             return 1
@@ -18,4 +18,6 @@ def leonardo_number(n):
 
 
 if __name__ == "__main__":
-    print(leonardo_number(1.5))
+    print(leonardo_number(100))
+
+
