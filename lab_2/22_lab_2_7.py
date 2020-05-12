@@ -8,9 +8,7 @@ def leonardo_number(n):
             num1 = num2 = 1
             i = 2
             while i < n:
-                l_num = num1 + num2 + 1
-                num1 = num2
-                num2 = l_num
+                num1, num2 = num2, num1 + num2 + 1 
                 i += 1
             return l_num
     except:
