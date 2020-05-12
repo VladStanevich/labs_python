@@ -10,12 +10,12 @@ def leonardo_number(n):
             while i < n:
                 num1, num2 = num2, num1 + num2 + 1 
                 i += 1
-            return l_num
-    except:
+            return num2
+    except ValueError:
         print("Вы ввели не число")
 
 
 if __name__ == "__main__":
-    print(leonardo_number(100))
+    print(leonardo_number(-100))
 
 
